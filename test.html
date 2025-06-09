@@ -1,0 +1,425 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AWMAI Minutes - Executive One-Pager</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Roboto', sans-serif;
+            background: #f5f5f5;
+            padding: 2rem;
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 16px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.1);
+            overflow: hidden;
+        }
+
+        .header {
+            background: linear-gradient(135deg, #1976d2 0%, #42a5f5 100%);
+            color: white;
+            padding: 3rem 4rem;
+            text-align: center;
+        }
+
+        .logo-section {
+            margin-bottom: 2rem;
+        }
+
+        .product-name {
+            font-size: 3.5rem;
+            font-weight: 300;
+            margin-bottom: 1rem;
+            letter-spacing: -1px;
+        }
+
+        .tagline {
+            font-size: 1.4rem;
+            opacity: 0.95;
+            font-weight: 300;
+        }
+
+        .key-metrics {
+            display: flex;
+            justify-content: center;
+            gap: 3rem;
+            margin-top: 2rem;
+        }
+
+        .metric {
+            text-align: center;
+        }
+
+        .metric-number {
+            font-size: 2.5rem;
+            font-weight: 700;
+            display: block;
+        }
+
+        .metric-label {
+            font-size: 0.9rem;
+            opacity: 0.9;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .content {
+            padding: 4rem;
+        }
+
+        .section {
+            margin-bottom: 3rem;
+        }
+
+        .section-title {
+            font-size: 1.8rem;
+            color: #1976d2;
+            margin-bottom: 1.5rem;
+            font-weight: 500;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+
+        .feature-card {
+            background: #f8f9fa;
+            border-radius: 12px;
+            padding: 2rem;
+            border-left: 4px solid #1976d2;
+            transition: transform 0.2s ease;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+        }
+
+        .feature-title {
+            font-size: 1.2rem;
+            font-weight: 500;
+            color: #1976d2;
+            margin-bottom: 0.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .feature-desc {
+            color: #666;
+            font-size: 0.95rem;
+        }
+
+        .tech-architecture {
+            background: linear-gradient(135deg, #e3f2fd 0%, #bbdefb 100%);
+            border-radius: 12px;
+            padding: 2rem;
+            margin: 2rem 0;
+        }
+
+        .tech-title {
+            font-size: 1.4rem;
+            color: #1976d2;
+            margin-bottom: 1rem;
+            font-weight: 500;
+        }
+
+        .tech-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .tech-item {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+        }
+
+        .tech-item-title {
+            font-weight: 500;
+            color: #1976d2;
+            margin-bottom: 0.5rem;
+        }
+
+        .tech-item-desc {
+            font-size: 0.9rem;
+            color: #666;
+        }
+
+        .architecture-placeholder {
+            background: white;
+            border: 2px dashed #1976d2;
+            border-radius: 12px;
+            padding: 3rem;
+            text-align: center;
+            color: #666;
+            margin: 2rem 0;
+        }
+
+        .value-prop {
+            background: linear-gradient(135deg, #4caf50 0%, #66bb6a 100%);
+            color: white;
+            border-radius: 12px;
+            padding: 2rem;
+            text-align: center;
+        }
+
+        .value-title {
+            font-size: 1.6rem;
+            margin-bottom: 1rem;
+            font-weight: 500;
+        }
+
+        .value-points {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1rem;
+            text-align: left;
+        }
+
+        .value-point {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 1rem;
+        }
+
+        .cta-section {
+            background: #1976d2;
+            color: white;
+            padding: 2rem;
+            border-radius: 12px;
+            text-align: center;
+            margin-top: 2rem;
+        }
+
+        .cta-title {
+            font-size: 1.4rem;
+            margin-bottom: 1rem;
+            font-weight: 500;
+        }
+
+        .cta-button {
+            background: white;
+            color: #1976d2;
+            border: none;
+            padding: 1rem 2rem;
+            border-radius: 25px;
+            font-size: 1.1rem;
+            font-weight: 500;
+            cursor: pointer;
+            transition: transform 0.2s ease;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-2px);
+        }
+
+        @media (max-width: 768px) {
+            body {
+                padding: 1rem;
+            }
+            
+            .header {
+                padding: 2rem;
+            }
+            
+            .product-name {
+                font-size: 2.5rem;
+            }
+            
+            .key-metrics {
+                flex-direction: column;
+                gap: 1rem;
+            }
+            
+            .content {
+                padding: 2rem;
+            }
+            
+            .features-grid,
+            .tech-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media print {
+            body {
+                background: white;
+                padding: 0;
+            }
+            
+            .container {
+                box-shadow: none;
+                border-radius: 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Header Section -->
+        <div class="header">
+            <div class="logo-section">
+                <h1 class="product-name">AWMAI Minutes</h1>
+                <p class="tagline">Enterprise-Grade AI-Powered Meeting Intelligence Platform</p>
+            </div>
+            <div class="key-metrics">
+                <div class="metric">
+                    <span class="metric-number">1000+</span>
+                    <span class="metric-label">Concurrent Calls</span>
+                </div>
+                <div class="metric">
+                    <span class="metric-number">Multi-LLM</span>
+                    <span class="metric-label">AI Architecture</span>
+                </div>
+                <div class="metric">
+                    <span class="metric-number">Enterprise</span>
+                    <span class="metric-label">Scale Ready</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Content Section -->
+        <div class="content">
+            <!-- Core Features -->
+            <div class="section">
+                <h2 class="section-title">
+                    <i class="material-icons">psychology</i>
+                    Core AI Features
+                </h2>
+                <div class="features-grid">
+                    <div class="feature-card">
+                        <div class="feature-title">
+                            <i class="material-icons" style="font-size: 1.2rem;">auto_awesome</i>
+                            Smart Meeting Analysis
+                        </div>
+                        <div class="feature-desc">Automatically creates summaries, takeaways, action items, and meeting effectiveness scores from call transcriptions</div>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-title">
+                            <i class="material-icons" style="font-size: 1.2rem;">insights</i>
+                            Historical Intelligence
+                        </div>
+                        <div class="feature-desc">Analyzes historical call data to generate actionable insights and prepare for next meetings using previous action items</div>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-title">
+                            <i class="material-icons" style="font-size: 1.2rem;">tune</i>
+                            Context-Aware Summaries
+                        </div>
+                        <div class="feature-desc">Custom summaries based on call type: internal meetings, client calls, advisor morning meetings</div>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-title">
+                            <i class="material-icons" style="font-size: 1.2rem;">search</i>
+                            Advanced Search & Integration
+                        </div>
+                        <div class="feature-desc">Search by topic/participants in date ranges. Full integration with TODO/Checklist systems for follow-up action items</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Technical Architecture -->
+            <div class="section">
+                <div class="tech-architecture">
+                    <h3 class="tech-title">Enterprise-Scale Technical Architecture</h3>
+                    <div class="tech-grid">
+                        <div class="tech-item">
+                            <div class="tech-item-title">Performance Proven</div>
+                            <div class="tech-item-desc">Tested for 1000+ concurrent calls with enterprise-grade reliability and scalability</div>
+                        </div>
+                        <div class="tech-item">
+                            <div class="tech-item-title">Multi-LLM Strategy</div>
+                            <div class="tech-item-desc">Leverages Claude 3.5, Claude 3.7, and OpenAI 4o for load balancing, fault tolerance, and user preferences</div>
+                        </div>
+                        <div class="tech-item">
+                            <div class="tech-item-title">API Integration</div>
+                            <div class="tech-item-desc">Seamless integration with existing systems using custom prompts and APIs for Zoom meeting summaries</div>
+                        </div>
+                        <div class="tech-item">
+                            <div class="tech-item-title">Meeting Effectiveness</div>
+                            <div class="tech-item-desc">Measures and provides nudges to users for continuous meeting effectiveness improvement</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Architecture Diagram Placeholder -->
+            <div class="section">
+                <h2 class="section-title">
+                    <i class="material-icons">architecture</i>
+                    System Architecture
+                </h2>
+                <div class="architecture-placeholder">
+                    <i class="material-icons" style="font-size: 3rem; color: #1976d2; margin-bottom: 1rem;">architecture</i>
+                    <p style="font-size: 1.2rem; color: #1976d2; font-weight: 500;">Architecture Diagram</p>
+                    <p style="font-size: 1rem; margin-top: 0.5rem;">Detailed technical architecture diagram will be inserted here</p>
+                </div>
+            </div>
+
+            <!-- Business Value -->
+            <div class="section">
+                <div class="value-prop">
+                    <h3 class="value-title">Business Impact & ROI</h3>
+                    <div class="value-points">
+                        <div class="value-point">
+                            <i class="material-icons">check_circle</i>
+                            <span>75% reduction in post-meeting administrative overhead</span>
+                        </div>
+                        <div class="value-point">
+                            <i class="material-icons">check_circle</i>
+                            <span>Improved action item completion through automated tracking</span>
+                        </div>
+                        <div class="value-point">
+                            <i class="material-icons">check_circle</i>
+                            <span>Enhanced meeting ROI via effectiveness measurement</span>
+                        </div>
+                        <div class="value-point">
+                            <i class="material-icons">check_circle</i>
+                            <span>Seamless enterprise workflow integration</span>
+                        </div>
+                        <div class="value-point">
+                            <i class="material-icons">check_circle</i>
+                            <span>Data-driven insights for strategic optimization</span>
+                        </div>
+                        <div class="value-point">
+                            <i class="material-icons">check_circle</i>
+                            <span>Scalable architecture supporting organizational growth</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Call to Action -->
+            <div class="cta-section">
+                <h3 class="cta-title">Ready for Enterprise-Scale Meeting Intelligence?</h3>
+                <p style="margin-bottom: 1.5rem; opacity: 0.9;">Schedule a technical demo to see AWMAI Minutes transform your meeting ROI</p>
+                <button class="cta-button">Schedule Technical Demo</button>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
