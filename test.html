@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AWMAI Minutes - Executive One-Pager</title>
+    <title>AWMAI Minutes - Executive Presentation</title>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <style>
@@ -16,28 +16,22 @@
         body {
             font-family: 'Roboto', sans-serif;
             background: #f5f5f5;
-            padding: 2rem;
             line-height: 1.6;
         }
 
         .container {
-            max-width: 1200px;
+            max-width: 1400px;
             margin: 0 auto;
             background: white;
-            border-radius: 16px;
-            box-shadow: 0 10px 40px rgba(0,0,0,0.1);
-            overflow: hidden;
+            min-height: 100vh;
+            box-shadow: 0 0 30px rgba(0,0,0,0.1);
         }
 
         .header {
             background: linear-gradient(135deg, #1976d2 0%, #42a5f5 100%);
             color: white;
-            padding: 3rem 4rem;
+            padding: 3rem 4rem 2rem 4rem;
             text-align: center;
-        }
-
-        .logo-section {
-            margin-bottom: 2rem;
         }
 
         .product-name {
@@ -51,13 +45,14 @@
             font-size: 1.4rem;
             opacity: 0.95;
             font-weight: 300;
+            margin-bottom: 2rem;
         }
 
         .key-metrics {
             display: flex;
             justify-content: center;
-            gap: 3rem;
-            margin-top: 2rem;
+            gap: 4rem;
+            margin-bottom: 2rem;
         }
 
         .metric {
@@ -77,18 +72,59 @@
             letter-spacing: 1px;
         }
 
-        .content {
-            padding: 4rem;
+        .tabs-container {
+            background: white;
         }
 
-        .section {
-            margin-bottom: 3rem;
+        .tab-navigation {
+            display: flex;
+            background: #f8f9fa;
+            border-bottom: 3px solid #e0e0e0;
+            overflow-x: auto;
+            padding: 0 2rem;
+        }
+
+        .tab-button {
+            background: none;
+            border: none;
+            padding: 1.5rem 2rem;
+            font-size: 1.1rem;
+            font-weight: 500;
+            color: #666;
+            cursor: pointer;
+            white-space: nowrap;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            transition: all 0.3s ease;
+            border-bottom: 3px solid transparent;
+        }
+
+        .tab-button:hover {
+            color: #1976d2;
+            background: rgba(25, 118, 210, 0.05);
+        }
+
+        .tab-button.active {
+            color: #1976d2;
+            border-bottom-color: #1976d2;
+            background: white;
+        }
+
+        .tab-content {
+            display: none;
+            padding: 3rem 4rem;
+            min-height: 500px;
+        }
+
+        .tab-content.active {
+            display: block;
         }
 
         .section-title {
-            font-size: 1.8rem;
+            font-size: 2rem;
             color: #1976d2;
-            margin-bottom: 1.5rem;
+            margin-bottom: 2rem;
             font-weight: 500;
             display: flex;
             align-items: center;
@@ -97,9 +133,9 @@
 
         .features-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
             gap: 2rem;
-            margin-bottom: 3rem;
+            margin-bottom: 2rem;
         }
 
         .feature-card {
@@ -107,16 +143,16 @@
             border-radius: 12px;
             padding: 2rem;
             border-left: 4px solid #1976d2;
-            transition: transform 0.2s ease;
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
         }
 
         .feature-card:hover {
-            transform: translateY(-2px);
+            transform: translateY(-3px);
             box-shadow: 0 8px 25px rgba(0,0,0,0.1);
         }
 
         .feature-title {
-            font-size: 1.2rem;
+            font-size: 1.3rem;
             font-weight: 500;
             color: #1976d2;
             margin-bottom: 0.5rem;
@@ -127,98 +163,145 @@
 
         .feature-desc {
             color: #666;
-            font-size: 0.95rem;
-        }
-
-        .tech-architecture {
-            background: linear-gradient(135deg, #e3f2fd 0%, #bbdefb 100%);
-            border-radius: 12px;
-            padding: 2rem;
-            margin: 2rem 0;
-        }
-
-        .tech-title {
-            font-size: 1.4rem;
-            color: #1976d2;
-            margin-bottom: 1rem;
-            font-weight: 500;
+            font-size: 1rem;
+            line-height: 1.6;
         }
 
         .tech-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 1.5rem;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+            margin: 2rem 0;
         }
 
         .tech-item {
             background: white;
-            padding: 1.5rem;
-            border-radius: 8px;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            padding: 2rem;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+            border: 1px solid #e0e0e0;
+            transition: transform 0.2s ease;
+        }
+
+        .tech-item:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.12);
         }
 
         .tech-item-title {
             font-weight: 500;
             color: #1976d2;
             margin-bottom: 0.5rem;
+            font-size: 1.2rem;
         }
 
         .tech-item-desc {
-            font-size: 0.9rem;
+            font-size: 1rem;
             color: #666;
         }
 
         .architecture-placeholder {
-            background: white;
+            background: linear-gradient(135deg, #e3f2fd 0%, #bbdefb 100%);
             border: 2px dashed #1976d2;
             border-radius: 12px;
-            padding: 3rem;
+            padding: 4rem;
             text-align: center;
             color: #666;
             margin: 2rem 0;
         }
 
-        .value-prop {
+        .value-section {
             background: linear-gradient(135deg, #4caf50 0%, #66bb6a 100%);
             color: white;
             border-radius: 12px;
-            padding: 2rem;
-            text-align: center;
+            padding: 3rem;
+            margin: 2rem 0;
         }
 
         .value-title {
-            font-size: 1.6rem;
-            margin-bottom: 1rem;
+            font-size: 2rem;
+            margin-bottom: 2rem;
             font-weight: 500;
+            text-align: center;
         }
 
-        .value-points {
+        .value-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 1rem;
-            text-align: left;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 1.5rem;
         }
 
         .value-point {
             display: flex;
             align-items: center;
-            gap: 0.5rem;
-            font-size: 1rem;
+            gap: 1rem;
+            font-size: 1.1rem;
+            background: rgba(255,255,255,0.1);
+            padding: 1rem;
+            border-radius: 8px;
+        }
+
+        .implementation-timeline {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin: 2rem 0;
+        }
+
+        .phase-card {
+            background: linear-gradient(135deg, #1976d2, #42a5f5);
+            color: white;
+            padding: 2rem;
+            border-radius: 12px;
+            text-align: center;
+            position: relative;
+        }
+
+        .phase-number {
+            position: absolute;
+            top: -15px;
+            left: 2rem;
+            background: #ff9800;
+            color: white;
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+        }
+
+        .phase-title {
+            font-size: 1.4rem;
+            font-weight: 500;
+            margin-bottom: 1rem;
+        }
+
+        .phase-desc {
+            opacity: 0.9;
+            line-height: 1.6;
         }
 
         .cta-section {
             background: #1976d2;
             color: white;
-            padding: 2rem;
+            padding: 3rem;
             border-radius: 12px;
             text-align: center;
-            margin-top: 2rem;
+            margin: 2rem 0;
         }
 
         .cta-title {
-            font-size: 1.4rem;
+            font-size: 1.8rem;
             margin-bottom: 1rem;
             font-weight: 500;
+        }
+
+        .cta-subtitle {
+            font-size: 1.1rem;
+            margin-bottom: 2rem;
+            opacity: 0.9;
         }
 
         .cta-button {
@@ -231,17 +314,30 @@
             font-weight: 500;
             cursor: pointer;
             transition: transform 0.2s ease;
+            margin: 0 1rem;
         }
 
         .cta-button:hover {
             transform: translateY(-2px);
         }
 
+        .next-steps {
+            margin-top: 2rem;
+            text-align: left;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .next-step {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin: 1rem 0;
+            font-size: 1.1rem;
+        }
+
         @media (max-width: 768px) {
-            body {
-                padding: 1rem;
-            }
-            
             .header {
                 padding: 2rem;
             }
@@ -252,10 +348,10 @@
             
             .key-metrics {
                 flex-direction: column;
-                gap: 1rem;
+                gap: 1.5rem;
             }
             
-            .content {
+            .tab-content {
                 padding: 2rem;
             }
             
@@ -263,17 +359,14 @@
             .tech-grid {
                 grid-template-columns: 1fr;
             }
-        }
-
-        @media print {
-            body {
-                background: white;
-                padding: 0;
+            
+            .tab-navigation {
+                padding: 0 1rem;
             }
             
-            .container {
-                box-shadow: none;
-                border-radius: 0;
+            .tab-button {
+                padding: 1rem;
+                font-size: 1rem;
             }
         }
     </style>
@@ -282,10 +375,8 @@
     <div class="container">
         <!-- Header Section -->
         <div class="header">
-            <div class="logo-section">
-                <h1 class="product-name">AWMAI Minutes</h1>
-                <p class="tagline">Enterprise-Grade AI-Powered Meeting Intelligence Platform</p>
-            </div>
+            <h1 class="product-name">AWMAI Minutes</h1>
+            <p class="tagline">Enterprise-Grade AI-Powered Meeting Intelligence Platform</p>
             <div class="key-metrics">
                 <div class="metric">
                     <span class="metric-number">1000+</span>
@@ -302,10 +393,75 @@
             </div>
         </div>
 
-        <!-- Content Section -->
-        <div class="content">
-            <!-- Core Features -->
-            <div class="section">
+        <!-- Tabs Container -->
+        <div class="tabs-container">
+            <!-- Tab Navigation -->
+            <div class="tab-navigation">
+                <button class="tab-button active" onclick="showTab('overview')">
+                    <i class="material-icons">dashboard</i>
+                    Overview
+                </button>
+                <button class="tab-button" onclick="showTab('features')">
+                    <i class="material-icons">psychology</i>
+                    AI Features
+                </button>
+                <button class="tab-button" onclick="showTab('architecture')">
+                    <i class="material-icons">architecture</i>
+                    Architecture
+                </button>
+                <button class="tab-button" onclick="showTab('value')">
+                    <i class="material-icons">trending_up</i>
+                    Business Value
+                </button>
+                <button class="tab-button" onclick="showTab('implementation')">
+                    <i class="material-icons">timeline</i>
+                    Implementation
+                </button>
+                <button class="tab-button" onclick="showTab('next-steps')">
+                    <i class="material-icons">rocket_launch</i>
+                    Next Steps
+                </button>
+            </div>
+
+            <!-- Tab Content -->
+            <div id="overview" class="tab-content active">
+                <h2 class="section-title">
+                    <i class="material-icons">visibility</i>
+                    Executive Overview
+                </h2>
+                <div class="features-grid">
+                    <div class="feature-card">
+                        <div class="feature-title">
+                            <i class="material-icons">psychology</i>
+                            AI-Powered Intelligence
+                        </div>
+                        <div class="feature-desc">Transform meeting transcriptions into actionable summaries, takeaways, and effectiveness scores using cutting-edge AI technology</div>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-title">
+                            <i class="material-icons">speed</i>
+                            Enterprise Performance
+                        </div>
+                        <div class="feature-desc">Battle-tested architecture supporting 1000+ concurrent calls with multi-LLM redundancy and fault tolerance</div>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-title">
+                            <i class="material-icons">integration_instructions</i>
+                            Seamless Integration
+                        </div>
+                        <div class="feature-desc">API-first design enables custom integrations with existing enterprise systems and workflows</div>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-title">
+                            <i class="material-icons">insights</i>
+                            Strategic Insights
+                        </div>
+                        <div class="feature-desc">Historical analysis and meeting preparation tools that drive continuous improvement and better outcomes</div>
+                    </div>
+                </div>
+            </div>
+
+            <div id="features" class="tab-content">
                 <h2 class="section-title">
                     <i class="material-icons">psychology</i>
                     Core AI Features
@@ -313,86 +469,96 @@
                 <div class="features-grid">
                     <div class="feature-card">
                         <div class="feature-title">
-                            <i class="material-icons" style="font-size: 1.2rem;">auto_awesome</i>
+                            <i class="material-icons">auto_awesome</i>
                             Smart Meeting Analysis
                         </div>
                         <div class="feature-desc">Automatically creates summaries, takeaways, action items, and meeting effectiveness scores from call transcriptions</div>
                     </div>
                     <div class="feature-card">
                         <div class="feature-title">
-                            <i class="material-icons" style="font-size: 1.2rem;">insights</i>
+                            <i class="material-icons">insights</i>
                             Historical Intelligence
                         </div>
                         <div class="feature-desc">Analyzes historical call data to generate actionable insights and prepare for next meetings using previous action items</div>
                     </div>
                     <div class="feature-card">
                         <div class="feature-title">
-                            <i class="material-icons" style="font-size: 1.2rem;">tune</i>
+                            <i class="material-icons">tune</i>
                             Context-Aware Summaries
                         </div>
                         <div class="feature-desc">Custom summaries based on call type: internal meetings, client calls, advisor morning meetings</div>
                     </div>
                     <div class="feature-card">
                         <div class="feature-title">
-                            <i class="material-icons" style="font-size: 1.2rem;">search</i>
-                            Advanced Search & Integration
+                            <i class="material-icons">search</i>
+                            Advanced Search
                         </div>
-                        <div class="feature-desc">Search by topic/participants in date ranges. Full integration with TODO/Checklist systems for follow-up action items</div>
+                        <div class="feature-desc">Search by topic/participants in date ranges with intelligent filtering and contextual results</div>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-title">
+                            <i class="material-icons">trending_up</i>
+                            Effectiveness Tracking
+                        </div>
+                        <div class="feature-desc">Measures and provides nudges to users for continuous meeting effectiveness improvement</div>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-title">
+                            <i class="material-icons">checklist</i>
+                            TODO Integration
+                        </div>
+                        <div class="feature-desc">Full integration with TODO/Checklist systems for seamless follow-up action item management</div>
                     </div>
                 </div>
             </div>
 
-            <!-- Technical Architecture -->
-            <div class="section">
-                <div class="tech-architecture">
-                    <h3 class="tech-title">Scalable AI-Powered Architecture</h3>
-                    <div class="tech-grid">
-                        <div class="tech-item">
-                            <div class="tech-item-title">Performance Proven</div>
-                            <div class="tech-item-desc">Tested for 1000+ concurrent calls with enterprise-grade reliability and scalability</div>
-                        </div>
-                        <div class="tech-item">
-                            <div class="tech-item-title">Multi-LLM Strategy</div>
-                            <div class="tech-item-desc">Leverages Claude 3.5, Claude 3.7, and OpenAI 4o for load balancing, fault tolerance, and user preferences</div>
-                        </div>
-                        <div class="tech-item">
-                            <div class="tech-item-title">API Integration</div>
-                            <div class="tech-item-desc">Seamless integration with existing systems using custom prompts and APIs for Zoom meeting summaries</div>
-                        </div>
-                        <div class="tech-item">
-                            <div class="tech-item-title">Meeting Effectiveness</div>
-                            <div class="tech-item-desc">Measures and provides nudges to users for continuous meeting effectiveness improvement</div>
-                        </div>
-                        <div class="tech-item">
-                            <div class="tech-item-title">Custom Artifact Creation</div>
-                            <div class="tech-item-desc">Generates tailored meeting artifacts and deliverables based on organizational templates and requirements</div>
-                        </div>
-                        <div class="tech-item">
-                            <div class="tech-item-title">Intelligent Preparation</div>
-                            <div class="tech-item-desc">Prepares for next meetings using previous action items and historical context for better outcomes</div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Architecture Diagram Placeholder -->
-            <div class="section">
+            <div id="architecture" class="tab-content">
                 <h2 class="section-title">
                     <i class="material-icons">architecture</i>
-                    System Architecture
+                    Scalable AI-Powered Architecture
                 </h2>
+                <div class="tech-grid">
+                    <div class="tech-item">
+                        <div class="tech-item-title">Performance Proven</div>
+                        <div class="tech-item-desc">Tested for 1000+ concurrent calls with enterprise-grade reliability and scalability</div>
+                    </div>
+                    <div class="tech-item">
+                        <div class="tech-item-title">Multi-LLM Strategy</div>
+                        <div class="tech-item-desc">Leverages Claude 3.5, Claude 3.7, and OpenAI 4o for load balancing, fault tolerance, and user preferences</div>
+                    </div>
+                    <div class="tech-item">
+                        <div class="tech-item-title">API Integration</div>
+                        <div class="tech-item-desc">Seamless integration with existing systems using custom prompts and APIs for Zoom meeting summaries</div>
+                    </div>
+                    <div class="tech-item">
+                        <div class="tech-item-title">Meeting Effectiveness</div>
+                        <div class="tech-item-desc">Measures and provides nudges to users for continuous meeting effectiveness improvement</div>
+                    </div>
+                    <div class="tech-item">
+                        <div class="tech-item-title">Custom Artifact Creation</div>
+                        <div class="tech-item-desc">Generates tailored meeting artifacts and deliverables based on organizational templates and requirements</div>
+                    </div>
+                    <div class="tech-item">
+                        <div class="tech-item-title">Intelligent Preparation</div>
+                        <div class="tech-item-desc">Prepares for next meetings using previous action items and historical context for better outcomes</div>
+                    </div>
+                </div>
+                
                 <div class="architecture-placeholder">
-                    <i class="material-icons" style="font-size: 3rem; color: #1976d2; margin-bottom: 1rem;">architecture</i>
-                    <p style="font-size: 1.2rem; color: #1976d2; font-weight: 500;">Architecture Diagram</p>
-                    <p style="font-size: 1rem; margin-top: 0.5rem;">Detailed technical architecture diagram will be inserted here</p>
+                    <i class="material-icons" style="font-size: 4rem; color: #1976d2; margin-bottom: 1rem;">architecture</i>
+                    <p style="font-size: 1.4rem; color: #1976d2; font-weight: 500;">System Architecture Diagram</p>
+                    <p style="font-size: 1rem; margin-top: 1rem;">Detailed technical architecture diagram will be inserted here</p>
                 </div>
             </div>
 
-            <!-- Business Value -->
-            <div class="section">
-                <div class="value-prop">
-                    <h3 class="value-title">Business Impact & ROI</h3>
-                    <div class="value-points">
+            <div id="value" class="tab-content">
+                <h2 class="section-title">
+                    <i class="material-icons">trending_up</i>
+                    Business Impact & ROI
+                </h2>
+                <div class="value-section">
+                    <h3 class="value-title">Measurable Business Benefits</h3>
+                    <div class="value-grid">
                         <div class="value-point">
                             <i class="material-icons">check_circle</i>
                             <span>75% reduction in post-meeting administrative overhead</span>
@@ -421,13 +587,98 @@
                 </div>
             </div>
 
-            <!-- Call to Action -->
-            <div class="cta-section">
-                <h3 class="cta-title">Ready for Enterprise-Scale Meeting Intelligence?</h3>
-                <p style="margin-bottom: 1.5rem; opacity: 0.9;">Schedule a technical demo to see AWMAI Minutes transform your meeting ROI</p>
-                <button class="cta-button">Schedule Technical Demo</button>
+            <div id="implementation" class="tab-content">
+                <h2 class="section-title">
+                    <i class="material-icons">timeline</i>
+                    Implementation Roadmap
+                </h2>
+                <div class="implementation-timeline">
+                    <div class="phase-card">
+                        <div class="phase-number">1</div>
+                        <div class="phase-title">Pilot Phase</div>
+                        <div class="phase-desc">Deploy with select teams, integrate with existing Zoom infrastructure, validate performance metrics and gather initial feedback</div>
+                    </div>
+                    <div class="phase-card">
+                        <div class="phase-number">2</div>
+                        <div class="phase-title">Scale Phase</div>
+                        <div class="phase-desc">Enterprise-wide rollout, custom integrations, advanced analytics and reporting, full API deployment</div>
+                    </div>
+                    <div class="phase-card">
+                        <div class="phase-number">3</div>
+                        <div class="phase-title">Optimize Phase</div>
+                        <div class="phase-desc">AI model fine-tuning, advanced workflow automation, predictive meeting insights, continuous improvement</div>
+                    </div>
+                </div>
+            </div>
+
+            <div id="next-steps" class="tab-content">
+                <div class="cta-section">
+                    <h2 class="cta-title">Ready to Transform Your Meeting Intelligence?</h2>
+                    <p class="cta-subtitle">Join forward-thinking enterprises leveraging AI to maximize meeting ROI and organizational efficiency</p>
+                    <button class="cta-button">Schedule Technical Demo</button>
+                    <button class="cta-button">Request Pilot Program</button>
+                    
+                    <div class="next-steps">
+                        <h3 style="color: white; margin-bottom: 1.5rem; text-align: center;">Immediate Next Steps</h3>
+                        <div class="next-step">
+                            <i class="material-icons">schedule</i>
+                            <span>30-minute technical architecture review</span>
+                        </div>
+                        <div class="next-step">
+                            <i class="material-icons">science</i>
+                            <span>Pilot program design and scoping</span>
+                        </div>
+                        <div class="next-step">
+                            <i class="material-icons">analytics</i>
+                            <span>ROI analysis and success metrics definition</span>
+                        </div>
+                        <div class="next-step">
+                            <i class="material-icons">integration_instructions</i>
+                            <span>Integration assessment with existing systems</span>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
+
+    <script>
+        function showTab(tabName) {
+            // Hide all tab contents
+            const tabContents = document.querySelectorAll('.tab-content');
+            tabContents.forEach(content => {
+                content.classList.remove('active');
+            });
+
+            // Remove active class from all buttons
+            const tabButtons = document.querySelectorAll('.tab-button');
+            tabButtons.forEach(button => {
+                button.classList.remove('active');
+            });
+
+            // Show selected tab content
+            document.getElementById(tabName).classList.add('active');
+
+            // Add active class to clicked button
+            event.target.closest('.tab-button').classList.add('active');
+        }
+
+        // Keyboard navigation
+        document.addEventListener('keydown', function(event) {
+            const tabs = ['overview', 'features', 'architecture', 'value', 'implementation', 'next-steps'];
+            const activeTab = document.querySelector('.tab-content.active').id;
+            const currentIndex = tabs.indexOf(activeTab);
+
+            if (event.key === 'ArrowRight' && currentIndex < tabs.length - 1) {
+                const nextTab = tabs[currentIndex + 1];
+                const nextButton = document.querySelector(`button[onclick="showTab('${nextTab}')"]`);
+                nextButton.click();
+            } else if (event.key === 'ArrowLeft' && currentIndex > 0) {
+                const prevTab = tabs[currentIndex - 1];
+                const prevButton = document.querySelector(`button[onclick="showTab('${prevTab}')"]`);
+                prevButton.click();
+            }
+        });
+    </script>
 </body>
 </html>
